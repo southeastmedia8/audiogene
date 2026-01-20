@@ -7,7 +7,8 @@ These keys power the "brain" of the agents (Composer, Producer, Conductor).
 
 | Service | Env Variable | Usage | Reason |
 | :--- | :--- | :--- | :--- |
-| **OpenAI** | `OPENAI_API_KEY` | `GPT-4o` | Top-tier reasoning for composition structure, lyrics generation, and music theory critique. |
+| **Google Gemini** | `GEMINI_API_KEY` | `Gemini 1.5 Pro` | Primary intelligence engine for music theory critique, code generation, and multi-modal analysis. |
+| **OpenAI** | `OPENAI_API_KEY` | `GPT-4o` | Fallback reasoning for composition structure, lyrics generation, and music theory critique. |
 | **Anthropic** | `ANTHROPIC_API_KEY` | `Claude 3.5 Sonnet` | Excellent at code generation (CSound/SuperCollider scripts) and complex logic. |
 
 ## 2. Audio Generation Models (The "Instruments")
