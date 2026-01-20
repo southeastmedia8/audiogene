@@ -8,10 +8,12 @@ class ComposerAgent(BaseAgent):
         super().__init__(name)
         self.ai_model = RandomMelodyGenerator()
         self.physics_model = SimpleOscillator(waveform='sine')
+        self.last_sequence = None
 
     def run(self, output_filename="output.wav", num_notes=5):
         print(f"[{self.name}] Generating melody with {num_notes} notes...")
         sequence = self.ai_model.generate(num_notes=num_notes)
+        self.last_sequence = sequence
 
         # Calculate total duration slightly roughly to init buffer
         total_duration = sum(note['duration'] for note in sequence)

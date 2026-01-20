@@ -70,3 +70,18 @@ class AudioBuffer:
     @property
     def duration(self):
         return len(self.data) / self.sample_rate
+
+    @classmethod
+    def load(cls, filepath):
+        """Loads an AudioBuffer from a WAV file."""
+        sample_rate, data = wavfile.read(filepath)
+
+        # Convert back to float32 [-1.0, 1.0]
+        if data.dtype == np.int16:
+            data = data.astype(np.float32) / 32767.0
+        elif data.dtype == np.uint8:
+            data = (data.astype(np.float32) - 128.0) / 128.0
+
+        channels = 1 if len(data.shape) == 1 else data.shape[1]
+
+        return cls(sample_rate=sample_rate, data=data, channels=channels)
